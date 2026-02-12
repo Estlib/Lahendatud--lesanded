@@ -4,42 +4,42 @@
     {
         static void Main(string[] args)
         {
-            // #n1. "Tervitus"
-            // kirjuta programm mis,
-            // - küsib tsükliga kasutajalt tema eesnime
-            string eesNimi = string.Empty;
-            while (eesNimi == string.Empty)
-            {
-                Console.WriteLine("Palun sisesta oma nimi siia: ");
-                eesNimi = Console.ReadLine();
-            }
-            // - - küsitakse uuesti tühja sisendi korral
-            // - küsib kasutajalt tema keskmist nime
-            string keskmineNimi = string.Empty;
-            while (keskmineNimi == string.Empty)
-            {
-                Console.WriteLine("Palun sisesta keskmine nimi siia: ");
-                keskmineNimi = Console.ReadLine();
-            }
-            // - - küsitakse uuesti tühja sisendi korral
-            // - küsib kasutajalt tema perekonnanime
-            string perekonnaNimi = "";
-            while (!(perekonnaNimi != string.Empty))
-            {
-                Console.WriteLine("Palun sisesta ka oma perekonnanimi siia: ");
-                perekonnaNimi = Console.ReadLine();
-            }
-            // - - küsitakse uuesti tühja sisendi korral
-            // - tema vanust
-            int minuVanus = 0;
-            while (minuVanus < 1)
-            { 
-                Console.WriteLine("Palun sisesta ka oma vanus siia: ");
-                minuVanus = int.Parse(Console.ReadLine());
-            }
-            // - - küsitakse uuesti tühja sisendi korral
-            // - ning väljastab talle tervituslause, kasutades kõiki muutujaid
-            Console.WriteLine($"Tere päevast {eesNimi} {perekonnaNimi}! Või kutsun sind {keskmineNimi}? Oled tublisti kasvanud, oled juba {minuVanus}-aastane");
+            //// #n1. "Tervitus"
+            //// kirjuta programm mis,
+            //// - küsib tsükliga kasutajalt tema eesnime
+            //string eesNimi = string.Empty;
+            //while (eesNimi == string.Empty)
+            //{
+            //    Console.WriteLine("Palun sisesta oma nimi siia: ");
+            //    eesNimi = Console.ReadLine();
+            //}
+            //// - - küsitakse uuesti tühja sisendi korral
+            //// - küsib kasutajalt tema keskmist nime
+            //string keskmineNimi = string.Empty;
+            //while (keskmineNimi == string.Empty)
+            //{
+            //    Console.WriteLine("Palun sisesta keskmine nimi siia: ");
+            //    keskmineNimi = Console.ReadLine();
+            //}
+            //// - - küsitakse uuesti tühja sisendi korral
+            //// - küsib kasutajalt tema perekonnanime
+            //string perekonnaNimi = "";
+            //while (!(perekonnaNimi != string.Empty))
+            //{
+            //    Console.WriteLine("Palun sisesta ka oma perekonnanimi siia: ");
+            //    perekonnaNimi = Console.ReadLine();
+            //}
+            //// - - küsitakse uuesti tühja sisendi korral
+            //// - tema vanust
+            //int minuVanus = 0;
+            //while (minuVanus < 1)
+            //{ 
+            //    Console.WriteLine("Palun sisesta ka oma vanus siia: ");
+            //    minuVanus = int.Parse(Console.ReadLine());
+            //}
+            //// - - küsitakse uuesti tühja sisendi korral
+            //// - ning väljastab talle tervituslause, kasutades kõiki muutujaid
+            //Console.WriteLine($"Tere päevast {eesNimi} {perekonnaNimi}! Või kutsun sind {keskmineNimi}? Oled tublisti kasvanud, oled juba {minuVanus}-aastane");
 
 
             // #n2. "Minu lemmiksnäkk"
@@ -48,6 +48,40 @@
             // programm kontrollib tsükliga kas järjendis on snäkk olemas
             // kui tsüklis leitakse snäkk, kuva tekst koos kasutajasisendiga, "jaa :D tean seda, {snäkk} on hea"
             // kui tsükkel lõppeb ilma snäkki leidmata, kuva tekst "ei tunne kahjuks {snäkk}i :C"
+
+            // nimekiri snäkkidest
+            List<string> snäkid = new List<string>() {"limonaad","kõrsikud","ŠnikurŠ","krõpsud","popcorn" };
+            // kasutaja sisestuse jaoks muutuja
+            string kasutajaleMeeldib = string.Empty;
+            // kas snäkk on olemas või mitte, vaikeväärtusena ei ole
+            bool isPresent = false;
+            // tsükkel mis käib niikaua kuni leitakse kasutajale meeldiv snäkk mida programm teab
+            while (isPresent != true) 
+            {
+                // küsime kasutajalt infot
+                Console.WriteLine("Sisesta oma lemmiksnäkk: ");
+                kasutajaleMeeldib = Console.ReadLine();
+
+                //kontrollime seda infot
+                foreach (var snäkk in snäkid)
+                {
+                    // kui leitakse vaste
+                    if (snäkk == kasutajaleMeeldib)
+                    {
+                        // seatakse muutujale väärtus true
+                        isPresent = true;
+                    }
+                }
+                // kuvame kasutajale sõnumi olenevalt infokontrolli tulemuse tagajärjel
+                if (isPresent == true) // kui leitakse, kuvatakse sõnum a
+                {
+                    Console.WriteLine($"jaa :D tean seda, {kasutajaleMeeldib} on hea");
+                }
+                else // muidu kuvatakse sõnum b
+                {
+                    Console.WriteLine($"ei tunne kahjuks {kasutajaleMeeldib}i :C");
+                }
+            }
 
             // #n3. "Metsataimede välimääraja"
             // kirjuta programm mis
