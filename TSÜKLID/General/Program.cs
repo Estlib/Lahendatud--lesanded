@@ -97,7 +97,7 @@
 
             bool anuddaJuan = true;
             string mida = string.Empty;
-            List<string> valikud = new List<string>() { "seent", "marja" };
+            List<string> valikud = new List<string>() { "seent", "marja", "puud" };
             List<string> seeneNimed = new List<string> { "kukeseen", "puravik", "sitaseen" };
             List<string> seeneInfod = new List<string>
             {
@@ -112,12 +112,19 @@
                 "Kes seda teab milline muulukas välja näeb...",
                 "Maasikas on maailma parim mari, kui sa leiad selle metsast, mitte poest."
             };
+            List<string> puudeNimed = new List<string> { "Tamm", "Saar", "Banaanipalm" };
+            List<string> puudeInfod = new List<string>
+            {
+                "Tamm on suur ja tugev ning võib elada mitmesaja aastaseks, lehed on sinkavonkalised.",
+                "Saar on ka suur ja tugev, kuid erinevalt tammest ei ole mürgine.",
+                "Banaanipalm on rohuline, mingi tohman pani selle puude hulka."
+            };
 
             while (anuddaJuan == true)
             {
                 do
                 {
-                    Console.WriteLine("Kas sa otsid seent või marja?");
+                    Console.WriteLine("Kas sa otsid seent, marja või puud?");
                     mida = Console.ReadLine();
                 }
                 //while (mida != "seent" || mida != "marja");
@@ -140,7 +147,7 @@
 
                     Console.WriteLine(seeneInfod.ElementAt(seeneArv - 1));
                 }
-                else
+                else if (mida == "marja")
                 {
                     List<int> marjaValikud = new List<int>() { 1, 2, 3 };
                     int marjaArv = 0;
@@ -156,6 +163,22 @@
 
                     Console.WriteLine(marjaInfod.ElementAt(marjaArv - 1));
                 }
+                else
+                {
+                    List<int> puudeValikud = new List<int>() { 1, 2, 3 };
+                    int puudeArv = 0;
+                    do
+                    {
+                        Console.WriteLine("Palun vali mari, mille kohta tahad infot, valikus on " + puudeNimed.Count + " tükki");
+                        for (int i = 0; i < puudeNimed.Count; i++)
+                        {
+                            Console.WriteLine((i + 1) + ". " + puudeNimed.ElementAt(i));
+                        }
+                        puudeArv = int.Parse(Console.ReadLine());
+                    } while (!puudeValikud.Contains(puudeArv));
+
+                    Console.WriteLine(puudeInfod.ElementAt(puudeArv - 1));
+                }
                 string kasutajaOtsus = "";
                 do
                 {
@@ -166,11 +189,12 @@
                 {
                     anuddaJuan = true;
                 }
-                else 
+                else
                 {
                     anuddaJuan = false;
                 }
             }
+            Console.WriteLine("Head aega!");
             // #n4. "Stonksid"
             // kirjuta programm mis töötab tsüklis ja omab tehtavat koodi mis:
             // küsib kasutajalt temapoolse investeeritava summa
